@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            color: #0D1321;
+        }
+        html {
+            background-color: #FFEDDF;
+        }
+
+        .activity-container {
+            margin: 10px 5px 0 5px;
+        }
+
+        input[type=text] {
+            border-radius: 3px;
+            width: 50%;
+            height: 35px;
+        }
+
+        .activity-container input[type=submit] {
+            margin-top: 3px;
+            width: 100%;
+            font-size: 200%;
+            border-radius: 5px;
+            background-color: #C5D86D;
+        }
+        .activity-container input[type=submit]:hover {
+            text-decoration-line: line-through;
+            background-color: #86615C;
+            color: #AFE0CE;
+        }
+    </style>
+
+</head>
+<body>
+    <center><h1>To do app</h1></center>
+    <div>
+        <center>
+        <form name="myForm" action="upload">
+            <div>
+                <input type="text" name="activity" placeholder="You will do...">
+                <input type="submit" value="&crarr;">
+            </div>
+        </form>
+        </center>
+        
+        <center><p>
+            <% if(works.length > 0) { %>
+                <%= works.length %> work(s) to do:
+            <% } else { %>
+                You don't have anything to do now.
+            <% } %>
+        </p></center>
+
+        <% if(works.length > 0) { %>
+            <div class="activity-container">
+                <% works.forEach(work => { %>
+
+                    <form action="delete/<%= work._id %>" >
+                        <input type="submit" value="<%= work.activity %>">
+                    </form>
+
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
